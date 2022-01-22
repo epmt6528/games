@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import React, {useState} from "react";
+import {OXOX} from "./pages";
 
 function App() {
+    const [gameTitle, setGameTitle] = useState('Tic Tac Toe')
+    const returnGameByTitle = (title: string) => {
+        switch(title){
+            case 'Tic Tac Toe':
+                return <OXOX />
+            default:
+
+        }
+    }
+
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+        setGameTitle(newValue);
+    };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+        <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={gameTitle}
+            onChange={handleChange}
         >
-          Learn React
-        </a>
-      </header>
+            <Tab label="Tic Tac Toe" value={"Tic Tac Toe"} />
+            <Tab label="Connect 4" value={"Connect 4"} />
+        </Tabs>
+        {returnGameByTitle(gameTitle)}
     </div>
   );
 }
