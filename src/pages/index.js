@@ -1,1 +1,2 @@
-export {default as OXOX} from './OXOX'
+export {default as TicTacToe} from './TicTacToe'
+export {default as GameHome} from './GameHome'
